@@ -4,9 +4,10 @@ import { useFormik } from 'formik';
 import * as yup from 'yup'
 import Master from '../../layout/master';
 import { Buttons } from '../../component';
-
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate()
 
   const initialValues = {
     fullname: '',
@@ -24,6 +25,7 @@ const SignUp = () => {
 
   const handleSignUp = async values => {
     console.log(values)
+    navigate('/dashboard')
   }
 
   const formMik = useFormik({
