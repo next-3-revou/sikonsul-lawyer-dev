@@ -1,44 +1,32 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { ListSlider } from "../../../component";
 
 const Sliders = () => {
 
   const settings = {
-    className: "center",
+    dots: true,
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 5,
-    swipeToSlide: true,
-    afterChange: function(index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-      );
-    }
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true
   };
 
   return (
+    <div className="slider-container slide-section content-section">
+      <h2 className="text-black text-xl text-left font-semibold pb-4">Mau konsultasi apa hari ini ?</h2>
       <Slider {...settings}>
-      <div className="bg-slate-50">
-        <h3 className="text-black">1</h3>
-      </div>
-      <div className="bg-slate-50">
-        <h3 className="text-black">2</h3>
-      </div>
-      <div>
-        <h3 className="text-black">3</h3>
-      </div>
-      <div>
-        <h3 className="text-black">4</h3>
-      </div>
-      <div>
-        <h3 className="text-black">5</h3>
-      </div>
-      <div>
-        <h3 className="text-black">6</h3>
-      </div>
-    </Slider>
+        <ListSlider title={"Hukum Kontrak"} />
+        <ListSlider title={"Hukum Bisnis"} />
+        <ListSlider title={"Hukum Properti"} />
+        <ListSlider title={"Hukum Kontra"} />
+        <ListSlider title={"Hukum Pidana"} />
+      </Slider>
+    </div>
   )
 }
 

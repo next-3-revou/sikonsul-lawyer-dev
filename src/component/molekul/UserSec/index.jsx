@@ -3,15 +3,17 @@
 import { Avatar } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 
-const Users = ({ name }) => {
+const Users = (data) => {
+  const { name, job } = data;
   return (
-    <div className="content px-4">
+    <div className="content-section">
       <div className="users-section flex">
         <div className="avatar-image">
           <Avatar size={52} icon={<UserOutlined />} />
         </div>
-        <div className="avatar-caption text-center px-2">
-          <h2 className="text-black text-xl">{name}</h2>
+        <div className="avatar-caption px-2">
+          <h2 className="text-black text-xl text-left font-semibold">{name}</h2>
+          <h2 className="text-[#7D8797] text-base text-left">{job}</h2>
         </div>
       </div>
     </div>
