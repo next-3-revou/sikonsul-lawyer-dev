@@ -18,7 +18,7 @@ const Front = () => {
 
   return (
     <Master type={'front'}>
-      <div className="content flex flex-col mt-72">
+      <div className="content flex flex-col mt-96">
         <div className="content-title text-left px-10">
           <h2 className="text-white text-4xl">Konsultasi Dengan Pengacara Jadi Lebih Mudah dan Efisien</h2>
         </div>

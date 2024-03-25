@@ -70,3 +70,17 @@ button:focus-visible {
   background-color: #ffffff;
   color: #112340;
 }
+
+.sliders-items {
+  display: flex!important;
+}
+
+.slick-slide {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.content-section {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+}

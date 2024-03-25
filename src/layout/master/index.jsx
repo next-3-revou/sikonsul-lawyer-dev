@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import Navbar from '../navbar'
 import './styles.css'
 
 const Master = ({children, type}) => {
@@ -13,8 +14,11 @@ const Master = ({children, type}) => {
 				>
 					<section className="flex h-full flex-col overflow-x-hidden">
 						<div className={`container flex h-full flex-col pb-4 pt-6`}>
-							<div className="flex h-full flex-col justify-between">
-										{children}
+							<div className="flex h-full flex-col">
+								{children}
+								{type === 'navbar' &&
+									<Navbar />
+								}
 							</div>
 						</div>
 					</section>
