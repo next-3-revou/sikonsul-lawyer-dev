@@ -10,11 +10,17 @@ const Dashboard = () => {
     navigate('/lawyer/profile')
   }
 
+  const lawyerCategory = e => { 
+    e.preventDefault()
+    navigate('/lawyer/category')
+  }
+
+
   return (
     <Master type={"navbar"}>
       <div className="content px-4 overflow-y-auto h-full">
         <Users name={"Kekeyi"} job={"Backend Engineer"}/>
-        <Sliders />
+        <Sliders onCLick={e => lawyerCategory(e)} />
         <TopRatedLawyer onClick={e => lawyerProfile(e)} />
         <News />
       </div>
