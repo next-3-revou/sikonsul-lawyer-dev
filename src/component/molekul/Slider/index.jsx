@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ListSlider } from "../../../component";
 
-const Sliders = () => {
+const Sliders = ({onCLick}) => {
 
   const settings = {
     dots: true,
@@ -20,11 +20,11 @@ const Sliders = () => {
     <div className="slider-container slide-section content-section">
       <h2 className="text-black text-xl text-left font-semibold pb-4">Mau konsultasi apa hari ini ?</h2>
       <Slider {...settings}>
-        <ListSlider title={"Hukum Kontrak"} />
-        <ListSlider title={"Hukum Bisnis"} />
-        <ListSlider title={"Hukum Properti"} />
-        <ListSlider title={"Hukum Kontra"} />
-        <ListSlider title={"Hukum Pidana"} />
+        <ListSlider title={"Hukum Kontrak"} onClick={onCLick} />
+        <ListSlider title={"Hukum Bisnis"} onClick={onCLick} />
+        <ListSlider title={"Hukum Properti"} onClick={onCLick} />
+        <ListSlider title={"Hukum Kontra"} onClick={onCLick} />
+        <ListSlider title={"Hukum Pidana"} onClick={onCLick} />
       </Slider>
     </div>
   )
