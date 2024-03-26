@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import Master from '../../layout/master';
 import { Buttons } from '../../component';
 import { useNavigate } from 'react-router-dom';
+import Breadcrumb from '../../layout/breadcrumb';
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -16,8 +17,15 @@ const SignUp = () => {
     password: ''
   }
 
+  const onPrev = e => {
+    e.preventDefault()
+    navigate(-1)
+  }
+
   const validationSchema = yup.object({
+    fullname: yup.string().required('This field required'),
     email: yup.string().required('This field required').email('Invalid format email'),
+    nik: yup.string().required('This field required'),
     password: yup.string().required('This field required')
                        .min(8, 'Password is too short - should be 8 chars minimum.')
                        .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
@@ -36,12 +44,10 @@ const SignUp = () => {
 
   return (
     <Master>
-      <div className="content flex flex-col">
-        <div className="content-title max-w-60 pl-8">
-          <h2 className='text-black text-2xl text-left font-bold'>Sign Up Account</h2>
-        </div>
+      <div className="content flex flex-col px-4">
+        <Breadcrumb title={"Signup Account"} onClick={e => onPrev(e)} />
         <div className="content-form mt-48">
-          <form className="px-8" onSubmit={formMik.handleSubmit}>
+          <form onSubmit={formMik.handleSubmit}>
             <div className="mb-4">
               <label
                 className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
@@ -92,7 +98,7 @@ const SignUp = () => {
                 value={formMik.values.nik || ''}
                 onChange={formMik.handleChange('nik')}
               />
-              { formMik.errors.email && (
+              { formMik.errors.nik && (
                   <p className="text-red-500 text-base text-left italic">{formMik.errors.nik}</p>
               )}  
             </div>              
@@ -115,7 +121,7 @@ const SignUp = () => {
               )}  
             </div>
             <div className="flex items-center justify-between">
-              <Buttons title={"Sign Up"} width={"w-96"} height={"h-12"} gap={"my-2"} tipe={"active"} />
+              <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
             </div>
           </form>
         </div>
