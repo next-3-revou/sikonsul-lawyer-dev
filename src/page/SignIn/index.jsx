@@ -1,15 +1,21 @@
 // import { useState } from 'react'
 // import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup'
 import Master from '../../layout/master';
 import { Buttons } from '../../component';
+import Breadcrumb from '../../layout/breadcrumb';
 
 const SignIn = () => {
-
+  const navigate = useNavigate()
   // const [messageApi, contextHolder] = message.useMessage();
 
 	// const [loading, setLoading] = useState(false)
+  const onPrev = e => {
+    e.preventDefault()
+    navigate(-1)
+  }
 
   const initialValues = {
     email: '',
@@ -35,12 +41,10 @@ const SignIn = () => {
 
   return (
     <Master>
-      <div className="content flex flex-col">
-        <div className="content-title max-w-60 pl-8">
-          <h2 className='text-black text-2xl text-left font-bold'>Sign in and Start Consultation</h2>
-        </div>
+      <div className="content flex flex-col px-4">
+        <Breadcrumb title={"Sign in and Start Consultation"} onClick={e => onPrev(e)} />
         <div className="content-form mt-48">
-          <form className="px-8" onSubmit={formMik.handleSubmit}>
+          <form onSubmit={formMik.handleSubmit}>
             <div className="mb-4">
               <label
                 className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
@@ -78,7 +82,7 @@ const SignIn = () => {
               )}  
             </div>
             <div className="flex items-center justify-between">
-              <Buttons title={"Sign In"} width={"w-96"} height={"h-12"} gap={"my-2"} tipe={"active"} />
+              <Buttons title={"Sign In"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
             </div>
           </form>
         </div>

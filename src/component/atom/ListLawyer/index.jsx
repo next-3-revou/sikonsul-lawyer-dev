@@ -1,12 +1,12 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+// import React from 'react'
 import { Avatar, Rate } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 
 
-const ListLawyer = (data) => {
-  const { name, speciality } = data
+const ListLawyer = ({name, speciality,onClick}) => {
   return (
-    <div className="list-lawyer py-2">
+    <div className="list-lawyer py-2 cursor-pointer" onClick={onClick}>
       <div className="list-lawyer-wrapper flex justify-between items-center">
         <div className="lawyer-profile flex">
           <div className="lawyer-avatar">
