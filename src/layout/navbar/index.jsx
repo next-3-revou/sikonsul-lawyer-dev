@@ -1,5 +1,5 @@
 // import React from 'react'
-// import { useNavigate  } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import {
   HomeOutlined,
 	MessageOutlined,
@@ -8,18 +8,17 @@ import {
 // import Buttons from "../../atom/Button"
 
 const Navbar = () => {
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
-	// const profilePage = (e) => { 
-	// 	e.preventDefault();
-	// 	console.log('tes')
-	// }
+	const Home = (e) => { 
+		e.preventDefault();
+		navigate('/dashboard')
+	}
 
-	// const addWishlist = (e) => {
-	// 	e.preventDefault();
-	// 	navigate('/wishlist')
-	// 	console.log('add')
-	// }
+	const Message = (e) => {
+		e.preventDefault();
+		navigate('/message')
+	}
 
 	// const historyPage = (e) => {
 	// 	e.preventDefault();
@@ -30,17 +29,17 @@ const Navbar = () => {
     <>
 		<div className="fixed inset-x-0 bottom-0 z-10 mx-auto flex min-h-[72px] max-w-[425px] items-center bg-[#112340] p-4 notched">
 			<div className="flex w-full justify-evenly items-end ">
-				<div className="menus px-2 flex flex-col items-center">
+				<div className="menus px-2 flex flex-col items-center cursor-pointer" onClick={e => Home(e)}>
 					<HomeOutlined style={{ fontSize: '26px'}}/>
 					<h2 className='text-white'>Home</h2>
 				</div>
-				<div className="menus px-2 flex flex-col items-center">
+				<div className="menus px-2 flex flex-col items-center cursor-pointer" onClick={e => Message(e)}>
 					<MessageOutlined style={{ fontSize: '26px'}}/>
 					<h2 className='text-white'>Message</h2>
 				</div>
-				<div className="menus px-2 flex flex-col items-center">
+				<div className="menus px-2 flex flex-col items-center cursor-pointer">
 					<UserOutlined style={{ fontSize: '26px'}}/>
-					<h2 className='text-white'>Lawyer</h2>
+					<h2 className='text-white'>Profile</h2>
 				</div>
 			</div>
 		</div>
