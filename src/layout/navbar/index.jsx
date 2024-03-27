@@ -20,6 +20,11 @@ const Navbar = () => {
 		navigate('/message')
 	}
 
+	const profilePage = (e) => {
+		e.preventDefault();
+		navigate('/profile')
+	}
+
 	// const historyPage = (e) => {
 	// 	e.preventDefault();
 	// 	console.log('history')
@@ -37,7 +42,7 @@ const Navbar = () => {
 					<MessageOutlined style={{ fontSize: '26px'}}/>
 					<h2 className='text-white'>Message</h2>
 				</div>
-				<div className="menus px-2 flex flex-col items-center cursor-pointer">
+				<div className="menus px-2 flex flex-col items-center cursor-pointer" onClick={e => profilePage(e)}>
 					<UserOutlined style={{ fontSize: '26px'}}/>
 					<h2 className='text-white'>Profile</h2>
 				</div>
