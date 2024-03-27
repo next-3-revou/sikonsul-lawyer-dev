@@ -1,6 +1,7 @@
 import Buttons from './Button';
 import ListCategoryLawyer from './ListCategoryLawyer';
 import ListLawyer from './ListLawyer';
+import ListMessages from './ListMessages';
 import ListNews from './ListNews';
 import ListSlider from './ListSlider';
 
@@ -9,5 +10,6 @@ export {
   ListSlider, 
   ListLawyer,
   ListNews,
-  ListCategoryLawyer
+  ListCategoryLawyer,
+  ListMessages
 };

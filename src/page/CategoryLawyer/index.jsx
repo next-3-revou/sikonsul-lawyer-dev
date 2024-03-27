@@ -1,10 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import Master from '../../layout/master'
 import Breadcrumb from "../../layout/breadcrumb";
-import { Avatar, Rate } from "antd";
-import { UserOutlined } from '@ant-design/icons';
-import RightChevron from '../../uploads/right-chevron.png'
 import { ListCategoryLawyer } from '../../component';
 
 
