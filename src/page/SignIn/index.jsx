@@ -31,6 +31,7 @@ const SignIn = () => {
 
   const handleLogin = async values => {
     console.log(values)
+    navigate('/dashboard')
   }
 
   const formMik = useFormik({
