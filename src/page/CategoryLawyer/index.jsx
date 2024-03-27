@@ -14,15 +14,20 @@ const CategoryLawyer = () => {
     navigate(-1)
   }
 
+  const chatLawyer = () => {
+    console.log('tes mchat')
+    navigate('/lawyer/chat')
+  }
+
 
   return (
     <Master>
       <div className="content px-4">
         <Breadcrumb title={"Pilih Lawyer"} onClick={e => onPrev(e)} type={"category"} />
         <div className="content-wrapper py-12">
-          <ListCategoryLawyer name={'John Doe'} speciality={"Hukum, Bisnis"} />
-          <ListCategoryLawyer name={'Jane Doe'} speciality={"Hukum, Bisnis"} />
-          <ListCategoryLawyer name={'Angel Tania'} speciality={"Hukum, Property"} />
+          <ListCategoryLawyer name={'John Doe'} speciality={"Hukum, Bisnis"} onClick={() => chatLawyer()}/>
+          <ListCategoryLawyer name={'Jane Doe'} speciality={"Hukum, Bisnis"} onClick={() => chatLawyer()} />
+          <ListCategoryLawyer name={'Angel Tania'} speciality={"Hukum, Property"} onClick={() => chatLawyer()} />
         </div>
       </div>
     </Master>

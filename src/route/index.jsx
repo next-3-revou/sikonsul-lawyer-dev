@@ -6,6 +6,7 @@ import Dashboard from '../page/Dashboard';
 import LawyerProfile from '../page/LawyerProfile';
 import CategoryLawyer from '../page/CategoryLawyer';
 import Messages from '../page/Messages';
+import Chats from '../page/Chats';
 
 export const PublicRoutes = () => {
   return (
@@ -13,10 +14,11 @@ export const PublicRoutes = () => {
           <Route path='/' element={<Front />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/message' element={<Messages />} />          
+          <Route path='/dashboard' element={<Dashboard />} /> 
+          <Route path='/message' element={<Messages />} />
+          <Route path='/lawyer/chat' element={<Chats />} />         
           <Route path='/lawyer/category' element={<CategoryLawyer />} />
           <Route path='/lawyer/profile' element={<LawyerProfile />} />
-          <Route path='/dashboard' element={<Dashboard />} /> 
           <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
   );
