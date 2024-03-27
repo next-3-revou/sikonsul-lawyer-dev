@@ -18,7 +18,7 @@ const Sliders = ({onCLick}) => {
 
   return (
     <div className="slider-container slide-section content-section">
-      <h2 className="text-black text-xl text-left font-semibold pb-4">Mau konsultasi apa hari ini ?</h2>
+      <h2 className="text-black text-xl text-left font-semibold pb-4">What consultation do you want today ?</h2>
       <Slider {...settings}>
         <ListSlider title={"Hukum Kontrak"} onClick={onCLick} />
         <ListSlider title={"Hukum Bisnis"} onClick={onCLick} />

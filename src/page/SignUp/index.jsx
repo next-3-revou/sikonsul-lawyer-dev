@@ -14,6 +14,7 @@ const SignUp = () => {
     fullname: '',
     email: '',
     nik: '',
+    occupation: '',
     password: ''
   }
 
@@ -26,13 +27,13 @@ const SignUp = () => {
     fullname: yup.string().required('This field required'),
     email: yup.string().required('This field required').email('Invalid format email'),
     nik: yup.string().required('This field required'),
+    occupation: yup.string().required('This field required'),
     password: yup.string().required('This field required')
                        .min(8, 'Password is too short - should be 8 chars minimum.')
                        .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
   })
 
   const handleSignUp = async values => {
-    console.log(values)
     navigate('/dashboard')
   }
 
@@ -101,7 +102,25 @@ const SignUp = () => {
               { formMik.errors.nik && (
                   <p className="text-red-500 text-base text-left italic">{formMik.errors.nik}</p>
               )}  
-            </div>              
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
+                htmlFor="occupation"
+              >
+                Occupation
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="occupation"
+                type="text"
+                value={formMik.values.occupation || ''}
+                onChange={formMik.handleChange('occupation')}
+              />
+              { formMik.errors.occupation && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.occupation}</p>
+              )}  
+            </div>                        
             <div className="mb-6">
               <label
                 className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
