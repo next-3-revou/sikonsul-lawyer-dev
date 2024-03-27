@@ -6,9 +6,9 @@ import RightChevron from '../../../uploads/right-chevron.png'
 
 
 
-const ListCategoryLawyer = ({ name, speciality }) => {
+const ListCategoryLawyer = ({ name, speciality, onClick }) => {
   return (
-    <div className="category-lawyer flex justify-between items-center border-b-2 border-[#EEEEEE] py-5 cursor-pointer">
+    <div className="category-lawyer flex justify-between items-center border-b-2 border-[#EEEEEE] py-5 cursor-pointer" onClick={onClick}>
       <div className="category-lawyer-info flex">
         <div className="category-lawyer-avatar">
           <Avatar size={52} icon={<UserOutlined />} />

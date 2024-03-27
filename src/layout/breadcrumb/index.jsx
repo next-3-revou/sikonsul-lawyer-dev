@@ -5,7 +5,7 @@ import chevront from '../../uploads/left-chevron.png'
 const Breadcrumb = ({title, onClick, type}) => {
   return (
     <div className="breadcrumb">
-      <div className={`breadcrumb-wrapper flex items-center ${type === 'profile' || type === 'category' ? 'justify-between' : ''}`}>
+      <div className={`breadcrumb-wrapper flex items-center ${type === 'profile' || type === 'category' || type === 'chat' ? 'justify-between' : ''}`}>
         <div className="bread-icon cursor-pointer" onClick={onClick}>
           <img src={chevront} className='w-6 h-6' alt="" />
         </div>
