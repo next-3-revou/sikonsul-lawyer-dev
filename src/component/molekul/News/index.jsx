@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { ListNews } from '../../../component'
 
 const News = () => {
@@ -15,3 +15,5 @@ const News = () => {
 }
 
 export default News
+
+// list lawyer terdaftar sama spesialisasi lainnya

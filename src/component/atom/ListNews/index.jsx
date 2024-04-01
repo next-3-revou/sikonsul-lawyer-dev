@@ -1,9 +1,10 @@
-import React from 'react'
-import { Avatar, Rate } from "antd";
+// import React from 'react'
+import { Avatar } from "antd";
 import { UserOutlined } from '@ant-design/icons';
-
+// Rate
 const ListNews = (data) => {
-  const { title, date, thumb } = data;
+  const { title, date } = data;
+// thumb
   return (
     <div className="list-news py-2">
       <div className="list-news-wrapper flex justify-between items-center">
