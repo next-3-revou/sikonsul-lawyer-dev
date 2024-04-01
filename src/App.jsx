@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import {PrivateRoutes, PublicRoutes} from './route'

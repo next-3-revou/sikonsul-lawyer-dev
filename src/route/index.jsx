@@ -12,8 +12,8 @@ import UserProfile from '../page/UserProfile';
 export const PublicRoutes = () => {
   return (
       <Routes>
-          {/* <Route path='/' element={<Front />} /> */}
-          <Route path='/signin' element={<SignIn />} />
+          <Route path='/' element={<SignIn />} />
+          {/* <Route path='/signin' element={<SignIn />} /> */}
           <Route path='/signup' element={<SignUp />} />
           <Route path='/dashboard' element={<Dashboard />} /> 
           <Route path='/message' element={<Messages />} />
