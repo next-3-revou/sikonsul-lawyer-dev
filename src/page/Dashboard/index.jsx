@@ -19,7 +19,7 @@ const Dashboard = () => {
   return (
     <Master type={"navbar"}>
       <div className="content px-4 overflow-y-auto h-full">
-        <Users name={"Kekeyi"} job={"Backend Engineer"}/>
+        <Users name={"Mimi Peri"} job={"Hukum Perdata"}/>
         <Sliders onCLick={e => lawyerCategory(e)} />
         <TopRatedLawyer onClick={e => lawyerProfile(e)} />
         <News />

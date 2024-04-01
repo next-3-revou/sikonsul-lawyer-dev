@@ -14,8 +14,8 @@ const UserProfile = () => {
                 <Avatar size={145} icon={<UserOutlined />} />
               </div>
               <div className="lawyer-profile-info-detail-identity">
-                <h2 className="text-black text-xl text-center font-semibold">Kekeyi</h2>
-                <h2 className="text-[#7D8797] text-base text-center">Backend Engineer</h2>
+                <h2 className="text-black text-xl text-center font-semibold">Mimi Peri</h2>
+                <h2 className="text-[#7D8797] text-base text-center">Hukum Perdata</h2>
               </div>
             </div>
             <div className="lawyer-profile-info-detail my-10">
@@ -51,17 +51,17 @@ const UserProfile = () => {
                 <div className="w-full py-4 border-b border-[#EEEEEE]">
                   <label
                     className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                    htmlFor="job"
+                    htmlFor="specialization"
                   >
-                    Job
+                    Specialization
                   </label>
                   <input
                     className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
-                    value={"Backend Engineer"}
+                    value={"Hukum Perdata"}
                     disabled={true}
                   />
-                </div>                       
+                </div>                        
               </div>
             </div>
           </div>
