@@ -16,4 +16,5 @@ const News = () => {
 
 export default News
 
-// list lawyer terdaftar sama spesialisasi lainnya
+// later on : add Fetch API News khusus Lawyer
+// list lawyer terdaftar sama spesialisasi lainnya 
