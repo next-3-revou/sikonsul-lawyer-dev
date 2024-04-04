@@ -3,10 +3,10 @@ import { Avatar } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 // Rate
 const ListNews = (data) => {
-  const { title, date } = data;
+  const { title, date, onClick } = data;
 // thumb
   return (
-    <div className="list-news py-2">
+    <div className="list-news py-2" onClick={onClick}>
       <div className="list-news-wrapper flex justify-between items-center">
         <div className="news-headline flex flex-col">
           <div className="news-title">
