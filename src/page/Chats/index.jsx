@@ -2,7 +2,8 @@
 // import React from 'react'
 import { 
   useEffect, 
-  useState 
+  useState,
+  useRef
 } from "react";
 import {
   ref,
@@ -28,6 +29,12 @@ const Chats = () => {
   const [chatContent, setChatContent] = useState("");
   const [chats, setChats] = useState([]);
   const [mounted, setMounted] = useState(true);
+
+  const AlwaysScrollToBottom = () => {
+    const elementRef = useRef();
+    useEffect(() => elementRef.current.scrollIntoView({ behavior: "smooth" }));
+    return <div ref={elementRef} />;
+  };
 
   useEffect(() => {
     
@@ -148,7 +155,7 @@ const Chats = () => {
                   )}
                 </div>
               ))}
-
+              <AlwaysScrollToBottom />
             </div>
             <div className="chat-input flex justify-around">
               <div className="chats-area">
