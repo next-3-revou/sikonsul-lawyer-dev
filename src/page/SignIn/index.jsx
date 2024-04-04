@@ -5,17 +5,12 @@ import { useFormik } from 'formik';
 import * as yup from 'yup'
 import Master from '../../layout/master';
 import { Buttons } from '../../component';
-import Breadcrumb from '../../layout/breadcrumb';
 
 const SignIn = () => {
   const navigate = useNavigate()
   // const [messageApi, contextHolder] = message.useMessage();
 
 	// const [loading, setLoading] = useState(false)
-  const onPrev = e => {
-    e.preventDefault()
-    navigate(-1)
-  }
 
   const initialValues = {
     email: '',
@@ -43,7 +38,9 @@ const SignIn = () => {
   return (
     <Master>
       <div className="content flex flex-col px-4">
-        <Breadcrumb title={"Sign in and Start Consultation"} onClick={e => onPrev(e)} />
+        <div className="bread-title max-w-60 px-4">
+          <h2 className='text-black text-2xl text-left font-bold'>Sign In Lawyer</h2>
+        </div>
         <div className="content-form mt-48">
           <form onSubmit={formMik.handleSubmit}>
             <div className="mb-4">

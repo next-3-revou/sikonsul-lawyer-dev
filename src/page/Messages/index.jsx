@@ -10,14 +10,14 @@ import {
 
 const Messages = () => {
   const navigate = useNavigate()
-  let userId = 'abcd';
+  let lawyerId = 'abcdef';
 
   const [messages, setMessages] = useState([]);
   const [mounted, setMounted] = useState(true);
 
 
   useEffect(() => {
-    const urlMessages = `messages/${userId}`;
+    const urlMessages = `messages/${lawyerId}`;
     const refMessages = ref(DB, urlMessages);
 
     if(mounted) {
@@ -55,9 +55,9 @@ const Messages = () => {
   })
   
 
-  const chatLawyer = (e, idLawyer) => {
+  const chatUser = (e, userId) => {
     e.preventDefault()
-    navigate(`/lawyer/${idLawyer}/chat`)
+    navigate(`/user/${userId}/chat`)
   }
 
   return (
@@ -69,7 +69,7 @@ const Messages = () => {
         {messages.length > 0 &&
           messages.map((cur, key) => {
             return (
-              <ListMessages key={key} title={cur.data[2].data} specialization={cur.data[1].data} onCLick={(e) => chatLawyer(e, cur.data[5].data)} />
+              <ListMessages key={key} title={cur.data[2].data} specialization={cur.data[1].data} onCLick={(e) => chatUser(e, cur.data[5].data)} />
             )
           })
 
