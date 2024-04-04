@@ -13,12 +13,11 @@ export const PublicRoutes = () => {
   return (
       <Routes>
           <Route path='/' element={<SignIn />} />
-          {/* <Route path='/signin' element={<SignIn />} /> */}
           <Route path='/signup' element={<SignUp />} />
           <Route path='/dashboard' element={<Dashboard />} /> 
           <Route path='/message' element={<Messages />} />
           <Route path='/profile' element={<UserProfile />} />          
-          <Route path='/lawyer/:lawyerId/chat' element={<Chats />} />         
+          <Route path='/user/:userId/chat' element={<Chats />} />         
           <Route path='/lawyer/category' element={<CategoryLawyer />} />
           <Route path='/lawyer/profile' element={<LawyerProfile />} />
           <Route path='*' element={<Navigate to='/' replace />} />

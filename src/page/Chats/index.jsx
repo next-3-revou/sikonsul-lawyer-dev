@@ -21,8 +21,8 @@ import { chatDate, chatTime } from "../../util/DateTime";
 import {ListChats} from '../../component'
 
 const Chats = () => {
-  let { lawyerId } = useParams();
-  let userId = 'abcd';
+  let { userId } = useParams();
+  let lawyerId = 'abcdef';
   const navigate = useNavigate()
 
   const [chatContent, setChatContent] = useState("");
@@ -78,7 +78,7 @@ const Chats = () => {
     const refChatting = ref(DB, urlChatting);
 
     const data = {
-      sendBy: userId,
+      sendBy: lawyerId,
       chatDate: today.getTime(),
       chatTime: chatTime(today),
       chatContent: chatContent,
@@ -87,20 +87,20 @@ const Chats = () => {
     const dataHistoryChatUser = {
       lastContentChat: chatContent,
       lastChatDate: today.getTime(),
-      uidPartner: lawyerId,
-      uidSender: userId,
-      senderName: userId,
-      partnerName: 'tes lawyer',
+      uidPartner: lawyerId, //abcdef
+      uidSender: userId, //abcd
+      senderName: userId, //abcd
+      partnerName: lawyerId, //abcdef
       status: true
     };
 
     const dataHistoryChatLawyer = {
       lastContentChat: chatContent,
       lastChatDate: today.getTime(),
-      uidPartner: userId,
-      uidSender: lawyerId,
-      senderName: 'tes lawyer',
-      partnerName: userId,
+      uidPartner: userId, //abcd
+      uidSender: lawyerId, //abcdef
+      senderName: lawyerId, //abcdef
+      partnerName: userId, //abcd
       status: true
     };
 
@@ -125,9 +125,7 @@ const Chats = () => {
     e.preventDefault()
     navigate(-1)
   }
-
   
-  console.log(chats)
   return (
     <Master>
       <div className="content h-full px-4">
@@ -141,11 +139,11 @@ const Chats = () => {
                     {cur.date}
                   </h6>
                   {cur.data.map((current, childKey) =>
-                    current.data.sendBy == userId ? (
+                    current.data.sendBy == lawyerId ? (
                      
                       <ListChats key={childKey} chatContent={current.data.chatContent} chatDate={current.data.chatDate} type="isMe"/>
                     ) : (
-                      <ListChats key={childKey} chatContent={current.data.chatContent} chatDate={current.data.chatDate} type="isLawyer"/> 
+                      <ListChats key={childKey} chatContent={current.data.chatContent} chatDate={current.data.chatDate} type="isUser"/> 
                     )
                   )}
                 </div>
