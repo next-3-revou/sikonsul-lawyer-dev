@@ -18,7 +18,7 @@ export const PublicRoutes = () => {
           <Route path='/dashboard' element={<Dashboard />} /> 
           <Route path='/message' element={<Messages />} />
           <Route path='/profile' element={<UserProfile />} />          
-          <Route path='/lawyer/chat' element={<Chats />} />         
+          <Route path='/user/:userId/chat' element={<Chats />} />         
           <Route path='/lawyer/category' element={<CategoryLawyer />} />
           <Route path='/lawyer/profile' element={<LawyerProfile />} />
           <Route path='*' element={<Navigate to='/' replace />} />
