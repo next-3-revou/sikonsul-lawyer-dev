@@ -12,14 +12,17 @@ const SignUp = () => {
   const navigate = useNavigate()
 
   const initialValues = {
-    fullname: '',
+    name: '',
     email: '',
-    nik: '',
+    password: '',
+    NIK: '',
     address: '',
-    degree: '',
-    specialization: '',
+    university: '',
     description: '',
-    password: ''
+    alumnus: '',
+    STRNumber: '',    
+    specializationIds: '',
+    
   }
 
   const onPrev = e => {
@@ -28,16 +31,18 @@ const SignUp = () => {
   }
 
   const validationSchema = yup.object({
-    fullname: yup.string().required('This field required'),
+    name: yup.string().required('This field required'),
     email: yup.string().required('This field required').email('Invalid format email'),
-    nik: yup.string().required('This field required'),
-    address: yup.string().required('This field required'),
-    degree: yup.string().required('This field required'),
-    specialization: yup.string().required('This field required'),
-    description: yup.string().required('This field required'),
     password: yup.string().required('This field required')
-                       .min(8, 'Password is too short - should be 8 chars minimum.')
-                       .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+                 .min(8, 'Password is too short - should be 8 chars minimum.')
+                 .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    NIK: yup.string().required('This field required'),
+    address: yup.string().required('This field required'),
+    university: yup.string().required('This field required'),
+    description: yup.string().required('This field required'),
+    alumnus: yup.string().required('This field required'),
+    STRNumber: yup.string().required('This field required'),
+    specializationIds: yup.string().required('This field required'),
   })
 
   const handleSignUp = async values => {
@@ -59,19 +64,19 @@ const SignUp = () => {
             <div className="mb-4">
               <label
                 className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                htmlFor="fullname"
+                htmlFor="name"
               >
                 Full Name
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="fullname"
+                id="name"
                 type="text"
-                value={formMik.values.fullname || ''}
-                onChange={formMik.handleChange('fullname')}
+                value={formMik.values.name || ''}
+                onChange={formMik.handleChange('name')}
               />
-              { formMik.errors.fullname && (
-                  <p className="text-red-500 text-base text-left italic">{formMik.errors.fullname}</p>
+              { formMik.errors.name && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.name}</p>
               )}  
             </div>            
             <div className="mb-4">
@@ -92,22 +97,40 @@ const SignUp = () => {
                   <p className="text-red-500 text-base text-left italic">{formMik.errors.email}</p>
               )}  
             </div>
+            <div className="mb-6">
+              <label
+                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="password"
+                type="password"
+                value={formMik.values.password || ''}
+                onChange={formMik.handleChange('password')}		
+              />
+              { formMik.errors.password && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.password}</p>
+              )}  
+            </div>
             <div className="mb-4">
               <label
                 className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                htmlFor="nik"
+                htmlFor="NIK"
               >
                 NIK
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="nik"
+                id="NIK"
                 type="text"
-                value={formMik.values.nik || ''}
-                onChange={formMik.handleChange('nik')}
+                value={formMik.values.NIK || ''}
+                onChange={formMik.handleChange('NIK')}
               />
-              { formMik.errors.nik && (
-                  <p className="text-red-500 text-base text-left italic">{formMik.errors.nik}</p>
+              { formMik.errors.NIK && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.NIK}</p>
               )}  
             </div>
             <div className="mb-4">
@@ -131,55 +154,19 @@ const SignUp = () => {
             <div className="mb-4">
               <label
                 className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                htmlFor="degreee"
+                htmlFor="university"
               >
                 University Degree
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="degree"
+                id="university"
                 type="text"
-                value={formMik.values.degree || ''}
-                onChange={formMik.handleChange('degree')}
+                value={formMik.values.university || ''}
+                onChange={formMik.handleChange('university')}
               />
-              { formMik.errors.degree && (
-                  <p className="text-red-500 text-base text-left italic">{formMik.errors.degree}</p>
-              )}  
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                htmlFor="specialization"
-              >
-                Your Specialization
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="specialization"
-                type="text"
-                value={formMik.values.specialization || ''}
-                onChange={formMik.handleChange('specialization')}
-              />
-              { formMik.errors.specialization && (
-                  <p className="text-red-500 text-base text-left italic">{formMik.errors.specialization}</p>
-              )}  
-            </div>                      
-            <div className="mb-6">
-              <label
-                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="password"
-                value={formMik.values.password || ''}
-                onChange={formMik.handleChange('password')}		
-              />
-              { formMik.errors.password && (
-                  <p className="text-red-500 text-base text-left italic">{formMik.errors.password}</p>
+              { formMik.errors.university && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.university}</p>
               )}  
             </div>
             <div className="mb-4">
@@ -199,7 +186,61 @@ const SignUp = () => {
               { formMik.errors.description && (
                   <p className="text-red-500 text-base text-left italic">{formMik.errors.description}</p>
               )}  
-            </div>  
+            </div> 
+            <div className="mb-4">
+              <label
+                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
+                htmlFor="alumnus"
+              >
+                Your alumnus
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="alumnus"
+                value={formMik.values.alumnus || ''}
+                onChange={formMik.handleChange('alumnus')}
+                rows={5}
+              />
+              { formMik.errors.alumnus && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.alumnus}</p>
+              )}  
+            </div> 
+            <div className="mb-4">
+              <label
+                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
+                htmlFor="STRNumber" 
+              >
+                STR Number
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="STRNumber"
+                value={formMik.values.STRNumber || ''}
+                onChange={formMik.handleChange('STRNumber')}
+                rows={5}
+              />
+              { formMik.errors.STRNumber && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.STRNumber}</p>
+              )}  
+            </div> 
+            <div className="mb-4">
+              <label
+                className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
+                htmlFor="specializationIds"
+              >
+                Your Specialization
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="specializationIds"
+                type="text"
+                value={formMik.values.specializationIds || ''}
+                onChange={formMik.handleChange('specializationIds')}
+              />
+              { formMik.errors.specializationIds && (
+                  <p className="text-red-500 text-base text-left italic">{formMik.errors.specializationIds}</p>
+              )}  
+            </div>                       
             <div className="flex items-center justify-between">
               <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
             </div>
