@@ -21,8 +21,9 @@ function App() {
     <Routes>
     {
       status
-           ? <Route path="/*" element={<PrivateRoutes />} />
-           : <Route path="/*" element={<PublicRoutes />} />
+
+           ? <Route path="/*" element={<PublicRoutes />} />
+           : <Route path="/*" element={<PrivateRoutes />} />
     }
     </Routes>
   )
