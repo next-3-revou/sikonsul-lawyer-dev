@@ -8,19 +8,14 @@ import CategoryLawyer from '../page/CategoryLawyer';
 import Messages from '../page/Messages';
 import Chats from '../page/Chats';
 import UserProfile from '../page/UserProfile';
+import Front from '../page/frontpage';
 
 export const PublicRoutes = () => {
   return (
       <Routes>
-          {/* <Route path='/' element={<SignIn />} /> */}
+          <Route path='/' element={<Front/>} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/dashboard' element={<Dashboard />} /> 
-          <Route path='/message' element={<Messages />} />
-          <Route path='/profile' element={<UserProfile />} />          
-          <Route path='/user/:userId/chat' element={<Chats />} />         
-          <Route path='/lawyer/category' element={<CategoryLawyer />} />
-          <Route path='/lawyer/profile' element={<LawyerProfile />} />
           <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
   );
@@ -29,7 +24,12 @@ export const PublicRoutes = () => {
 export const PrivateRoutes = () => {
   return (
       <Routes>
-          <Route path='/' element={<SignIn />} />
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/message' element={<Messages />} />
+          <Route path='/user/:userId/chat' element={<Chats />} />
+          <Route path='/profile' element={<UserProfile />} />                   
+          <Route path='/lawyer/category' element={<CategoryLawyer />} />
+          <Route path='/lawyer/profile' element={<LawyerProfile />} />
           <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
   );

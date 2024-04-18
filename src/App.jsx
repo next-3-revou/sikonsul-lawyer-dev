@@ -1,22 +1,31 @@
-/* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { PrivateRoutes, PublicRoutes } from './route'
+import { useSelector } from 'react-redux';
+import {PrivateRoutes,PublicRoutes} from './route'
 import './App.css'
-// import { AuthProvider } from './context/AuthContext'
 
 function App() {
+  const tokenizer = useSelector(state => state.tokens.tokenizer);
   const [status, setStatus] = useState(false)
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('accessToken'));
+    if(items) {
+      setStatus(true) 
+    } else if(tokenizer === undefined ) {
+      setStatus(false)
+    }
+  }, [tokenizer])
+
   return (
-    // <AuthProvider>
-      <Routes>
-        {
-          status
-            ? <Route path="/*" element={<PrivateRoutes />} />
-            : <Route path="/*" element={<PublicRoutes />} />
-        }
-      </Routes>
-    // </AuthProvider>
+    <Routes>
+    {
+      status
+           ? <Route path="/*" element={<PrivateRoutes />} />
+           : <Route path="/*" element={<PublicRoutes />} />
+    }
+    </Routes>
   )
 }
+
 export default App
