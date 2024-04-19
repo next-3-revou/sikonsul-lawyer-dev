@@ -57,7 +57,7 @@ const SignIn = () => {
         dispatch(addToken(res.data.data))
         dispatch(addProfile(res.data.data))
         storeData('accessToken', res.data.data.token)
-				storeData('userId', res.data.data.userId)
+				storeData('userId', res.data.data.lawyerId)
         messageApi.open({
           type: 'success',
           content: "Success Login",
