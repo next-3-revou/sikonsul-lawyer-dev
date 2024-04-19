@@ -1,28 +1,37 @@
 const initialState = {
   profile: {
-    id: '',
+    id:'',
     name: '',
     email: '',
-    nik: '',  
-    occupation: '',
-    isPremium: false
+    password: '',
+    NIK: '',
+    address: '',
+    university: '',
+    description: '',
+    alumnus: '',
+    STRNumber: '',
+    specialization: []
   }
-
-};
+  };
 
 const profileReducer = (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
     case 'ADD_PROFILE':
       return {
         ...state,
-        profile: {
+          profile: {
           ...state.profile,
           id: action.payload.id,
           name: action.payload.name,
           email: action.payload.email,
           nik: action.payload.NIK,
-          occupation: action.payload.occupation,
-          isPremium: action.payload.isPremium,
+          university: action.payload.university,
+          description: action.payload.description,
+          alumnus: action.payload.alumnus,
+          STRNumber: action.payload.STRNumber,
+          specialization: action.payload.specialization
+
         },
       };
 
@@ -30,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state
       }
-      
+
     default:
       return {
         ...state

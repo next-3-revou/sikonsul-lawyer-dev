@@ -1,0 +1,18 @@
+// Token
+
+export const ADD_TOKEN = 'ADD_TOKEN';
+export const CLEAR_TOKEN = 'CLEAR_TOKEN';
+
+export const ADD_PROFILE = 'ADD_PROFILE';
+export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+
+export const FETCH_PROFILE_REQUEST = 'FETCH_PROFILE_REQUEST';
+export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
+export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
+
+
+export const ADD_NEWS = 'ADD_NEWS';
+export const ADD_SPECIALIZATIONS = 'ADD_SPECIALIZATIONS';
+export const ADD_LAWYERS = 'ADD_LAWYERS';
+
+

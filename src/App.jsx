@@ -5,7 +5,7 @@ import {PrivateRoutes,PublicRoutes} from './route'
 import './App.css'
 
 function App() {
-  const tokenizer = useSelector(state => state.tokens.tokenizer);
+  const tokenizer = useSelector(state => state.token.tokenizer);
   const [status, setStatus] = useState(false)
 
   useEffect(() => {
@@ -22,8 +22,8 @@ function App() {
     {
       status
 
-           ? <Route path="/*" element={<PublicRoutes />} />
-           : <Route path="/*" element={<PrivateRoutes />} />
+           ? <Route path="/*" element={<PrivateRoutes />} />
+           : <Route path="/*" element={<PublicRoutes />} />
     }
     </Routes>
   )

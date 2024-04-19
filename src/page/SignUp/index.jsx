@@ -29,7 +29,7 @@ const SignUp = () => {
     description: '',
     alumnus: '',
     STRNumber: '',
-    specialization: ['']
+    specialization: []
   }
 
   const onPrev = e => {
@@ -51,13 +51,6 @@ const SignUp = () => {
     STRNumber: yup.string().required('This field required'),
     specialization: yup.array().of(yup.string().required('Specialization is required'))
   })
-
-  // Penanganan perubahan nilai untuk specialization
-  const handleSpecializationChange = (index) => (e) => {
-    const newSpecializations = [...formMik.values.specialization];
-    newSpecializations[index] = e.target.value;
-    formMik.setFieldValue('specialization', newSpecializations);
-  };
 
   const handleSignUp = async values => {
     try {
@@ -262,26 +255,36 @@ const SignUp = () => {
                 )}
               </div>
 
+
               {formMik.values.specialization.map((specialization, index) => (
                 <div className="mb-4" key={index}>
                   <label
                     className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                    htmlFor={specialization}>
+                    htmlFor={`specialization-${index}`}
+                  >
                     Specialization
                   </label>
-                  <input
+                  <select
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id={specialization}
-                    type="text"
-                    value={specialization.id}
-                    onChange={handleSpecializationChange({specialization})}
-                  />
+                    id={`specialization-${index}`}
+                    value={formMik.values.specialization[index] || []} // Mengambil nilai spesialisasi pada indeks tertentu
+                    onChange={(e) => {
+                      const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
+                      const newSpecializations = [...formMik.values.specialization];
+                      newSpecializations[index] = selectedOptions; // Menyimpan nilai spesialisasi pada indeks tertentu
+                      formMik.setFieldValue('specialization', newSpecializations);
+                    }}
+                    multiple // Memungkinkan pemilihan lebih dari satu opsi
+                  >
+                    <option value="1">Hukum Bisnis</option>
+                    <option value="2">Hukum Kontra</option>
+                    <option value="3">Hukum Pidana</option>
+                  </select>
                   {formMik.errors.specialization && formMik.errors.specialization[index] && (
                     <p className="text-red-500 text-base text-left italic">{formMik.errors.specialization[index]}</p>
                   )}
                 </div>
               ))}
-
 
               <div className="flex items-center justify-between">
                 <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
