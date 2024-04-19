@@ -5,6 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 import RightChevron from '../../../uploads/right-chevron.png'
 
 const ListMessages = ({ title, specialization, onCLick }) => {
+  console.log(title,specialization,'gagagagagga')
   return (
     <div className="category-lawyer flex justify-between items-center border-b-2 border-[#EEEEEE] py-5 cursor-pointer" onClick={onCLick}>
       <div className="category-lawyer-info flex">

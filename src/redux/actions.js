@@ -8,14 +8,24 @@ import {
   CLEAR_TOKEN,
   FETCH_PROFILE_REQUEST,
   FETCH_PROFILE_SUCCESS,
-  FETCH_PROFILE_FAILURE} from './actionTypes';
+  FETCH_PROFILE_FAILURE,
+  ADD_TOKEN} from './actionTypes';
 import {clearData} from '../util/LocalStorage';
+
 
 
 import { getProfile } from '../services/index'; // Import fungsi getProfile dari services
 
 
+export const addToken = (tokenData)=>{
+  return {
+    type:ADD_TOKEN,
+    payload:tokenData.token
+  }
+}
+
 export const addProfile = (profileData) => {
+  console.log(profileData,'profile haikal')
   return {
     type: ADD_PROFILE,
     payload: profileData
@@ -67,6 +77,7 @@ export const fetchProfileRequest = () => {
 };
 
 export const fetchProfileSuccess = (profile) => {
+  console.log(profile,'profile haikal')
   return {
     type: FETCH_PROFILE_SUCCESS,
     payload: profile
@@ -80,12 +91,13 @@ export const fetchProfileFailure = (error) => {
   };
 };
 
-export const fetchProfile = () => {
-  const token = localStorage.getItem('accessToken');
+export const fetchProfile = (lawyerId) => {
+
   return async (dispatch) => {
     dispatch(fetchProfileRequest());
     try {
-      const profileData = await getProfile(token);
+      const profileData = await getProfile(lawyerId);
+      console.log(profileData,'data haikal shahab')
       dispatch(fetchProfileSuccess(profileData));
     } catch (error) {
       dispatch(fetchProfileFailure(error.message));
