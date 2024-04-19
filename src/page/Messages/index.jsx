@@ -3,17 +3,20 @@ import Master from "../../layout/master";
 import { ListMessages } from "../../component";
 import { useNavigate } from 'react-router-dom';
 import { DB } from "../../config";
+import { useSelector } from 'react-redux';
 import {
   ref,
   onValue,
 } from "firebase/database";
+import { message } from "antd";
 
 const Messages = () => {
   const navigate = useNavigate()
-  let lawyerId = 'abcdef';
-
+  const profile = useSelector(state => state.profile.profile);  
+  let lawyerId = profile.id;
   const [messages, setMessages] = useState([]);
   const [mounted, setMounted] = useState(true);
+  const [messageApi, contextHolder] = message.useMessage();
 
 
   useEffect(() => {
@@ -48,6 +51,11 @@ const Messages = () => {
           });
           setMessages(AllDataChat);
           setMounted(false);
+        }else{
+          messageApi.open({
+            type: 'error',
+            content: 'No Messages',
+          })
         }
       })
     }
@@ -61,6 +69,8 @@ const Messages = () => {
   }
 
   return (
+    <>
+    {contextHolder}
     <Master type={"navbar"}>
       <div className="content px-4">
         <div className="content-title pt-4 pb-2">
@@ -68,6 +78,7 @@ const Messages = () => {
         </div>
         {messages.length > 0 &&
           messages.map((cur, key) => {
+            console.log(cur.data,'data haikal shahab')
             return (
               <ListMessages key={key} title={cur.data[2].data} specialization={cur.data[1].data} onCLick={(e) => chatUser(e, cur.data[5].data)} />
             )
@@ -84,6 +95,7 @@ const Messages = () => {
 
       </div>
     </Master>
+    </>
   )
 }
 

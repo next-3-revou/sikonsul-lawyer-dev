@@ -11,6 +11,9 @@ import { Spin, message } from 'antd';
 import { storeData } from '../../util/LocalStorage';
 import { Avatar } from "antd";
 import { EyeOutlined, EyeInvisibleOutlined  } from '@ant-design/icons';
+import {} from '../../redux/reducers/'
+import { ADD_TOKEN } from '../../redux/actionTypes';
+import { addProfile, addToken } from '../../redux/actions';
 
 const URL_AUTH = import.meta.env.VITE_BE_ENDPOINT_AUTH
 
@@ -51,7 +54,8 @@ const SignIn = () => {
       const res = await axios.post(`${URL_AUTH}/login`, values)
       if(res.status === 200) {
         setLoad(false)
-        dispatch({type: 'ADD_TOKEN', payload: res.data.data})
+        dispatch(addToken(res.data.data))
+        dispatch(addProfile(res.data.data))
         storeData('accessToken', res.data.data.token)
 				storeData('userId', res.data.data.userId)
         messageApi.open({

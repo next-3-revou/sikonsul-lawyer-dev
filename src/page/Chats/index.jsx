@@ -20,10 +20,12 @@ import './styles.css'
 import Breadcrumb from "../../layout/breadcrumb";
 import { chatDate, chatTime } from "../../util/DateTime";
 import {ListChats} from '../../component'
+import { useSelector } from 'react-redux';
 
 const Chats = () => {
-  let { userId } = useParams();
-  let lawyerId = 'abcdef';
+  let { userId,userName } = useParams();
+  const profile = useSelector(state => state.profile.profile);
+  let lawyerId = profile.id;
   const navigate = useNavigate()
 
   const [chatContent, setChatContent] = useState("");
