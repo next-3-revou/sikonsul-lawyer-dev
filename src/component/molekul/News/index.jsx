@@ -10,7 +10,7 @@ const News = () => {
   useEffect(() => {
     const fetchDataNews = async () => {
       const data = await getAllNews();
-      setNews(data.articles);
+      setNews(data);
     };
     fetchDataNews();
   }, []);
@@ -34,6 +34,3 @@ const News = () => {
 }
 
 export default News
-
-// later on : add Fetch API News khusus Lawyer
-// list lawyer terdaftar sama spesialisasi lainnya 
