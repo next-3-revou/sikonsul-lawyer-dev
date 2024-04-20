@@ -23,9 +23,11 @@ import {ListChats} from '../../component'
 import { useSelector } from 'react-redux';
 
 const Chats = () => {
-  let { userId,userName } = useParams();
+  let { userId, userName } = useParams();
   const profile = useSelector(state => state.profile.profile);
+
   let lawyerId = profile.id;
+  let cleanUsername = userName.replace(/-/g, " ");
   const navigate = useNavigate()
 
   const [chatContent, setChatContent] = useState("");
@@ -98,8 +100,8 @@ const Chats = () => {
       lastChatDate: today.getTime(),
       uidPartner: lawyerId, //abcdef
       uidSender: userId, //abcd
-      senderName: userId, //abcd
-      partnerName: lawyerId, //abcdef
+      senderName: cleanUsername, //abcd
+      partnerName: profile.name, //abcdef
       status: true
     };
 
@@ -108,8 +110,8 @@ const Chats = () => {
       lastChatDate: today.getTime(),
       uidPartner: userId, //abcd
       uidSender: lawyerId, //abcdef
-      senderName: lawyerId, //abcdef
-      partnerName: userId, //abcd
+      senderName: profile.name, //abcdef
+      partnerName: cleanUsername, //abcd
       status: true
     };
 

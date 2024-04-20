@@ -63,9 +63,10 @@ const Messages = () => {
   })
   
 
-  const chatUser = (e, userId) => {
+  const chatUser = (e, userId, userName) => {
     e.preventDefault()
-    navigate(`/user/${userId}/chat`)
+    let nameUrl = userName.replace(/\s+/g, '-')
+    navigate(`/user/${userId}/chat/${nameUrl}`)
   }
 
   return (
@@ -78,9 +79,8 @@ const Messages = () => {
         </div>
         {messages.length > 0 &&
           messages.map((cur, key) => {
-            console.log(cur.data,'data haikal shahab')
             return (
-              <ListMessages key={key} title={cur.data[2].data} specialization={cur.data[1].data} onCLick={(e) => chatUser(e, cur.data[5].data)} />
+              <ListMessages key={key} title={cur.data[2].data} specialization={cur.data[1].data} onCLick={(e) => chatUser(e, cur.data[5].data, cur.data[2].data)} />
             )
           })
 
