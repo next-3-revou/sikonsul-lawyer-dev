@@ -17,6 +17,10 @@ import {clearData} from '../util/LocalStorage';
 import { getProfile } from '../services/index'; // Import fungsi getProfile dari services
 
 
+const URL_NEWS = import.meta.env.VITE_BE_ENDPOINT_NEWS
+const URL_SPECIAL = import.meta.env.VITE_BE_ENDPOINT_SPECIAL
+const URL_LIST_LAWYERS = import.meta.env.VITE_BE_ENDPOINT_LIST_LAWYERS
+
 export const addToken = (tokenData)=>{
   return {
     type:ADD_TOKEN,
@@ -45,17 +49,18 @@ export const clearToken = () => {
   };
 };
 
+export const fetchSpesialize = ()=>{
+
+}
+
 export const fetchData = () => {
   return async (dispatch) => {
     try {
-      const [newsRes, specialRes, lawyersRes] = await Promise.all([
-        axios.get(URL_NEWS),
-        axios.get(URL_SPECIAL),
-        axios.get(URL_LIST_LAWYERS)
-      ]);
-
-      dispatch({ type: ADD_NEWS, payload: newsRes.data });
+      const newsRes = await axios.get(URL_NEWS);
+      dispatch({ type: ADD_NEWS, payload: newsRes.data});
+      const specialRes = await axios.get(URL_SPECIAL);
       dispatch({ type: ADD_SPECIALIZATIONS, payload: specialRes.data.data.specializations });
+      const lawyersRes = await axios.get(URL_LIST_LAWYERS);
       dispatch({ type: ADD_LAWYERS, payload: lawyersRes.data.data.lawyers });
     } catch (error) {
       // Handle error
@@ -71,7 +76,6 @@ export const fetchProfileRequest = () => {
 };
 
 export const fetchProfileSuccess = (profile) => {
-  console.log(profile,'profile haikal')
   return {
     type: FETCH_PROFILE_SUCCESS,
     payload: profile
@@ -86,12 +90,10 @@ export const fetchProfileFailure = (error) => {
 };
 
 export const fetchProfile = (lawyerId) => {
-console.log(lawyerId,'ini id')
   return async (dispatch) => {
     dispatch(fetchProfileRequest());
     try {
       const profileData = await getProfile(lawyerId);
-      console.log(profileData,'data haikal shahab')
       dispatch(fetchProfileSuccess(profileData));
     } catch (error) {
       dispatch(fetchProfileFailure(error.message));

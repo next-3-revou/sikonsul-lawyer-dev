@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spin, Modal } from 'antd';
 import { clearData, getData } from '../../util/LocalStorage';
-import { fetchProfile } from '../../redux/actions';
+import { fetchProfile,fetchData } from '../../redux/actions';
 import {News, Sliders, TopRatedLawyer, Users} from "../../component"
 import Master from "../../layout/master"
 
@@ -11,15 +11,17 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile.profile);
-  const news = useSelector((state) => state.news);
-  const specializations = useSelector((state) => state.specializations);
   const [open, setOpen] = useState(false);
   const [load, setLoad] = useState(false);
+  const Datanews = useSelector((state) => state.dataReducer.news);
+  const Dataspecializations = useSelector((state) => state.dataReducer.specializations);
+  const Datalawyers = useSelector((state) => state.dataReducer.lawyers);
   
   useEffect(() => {
     const userId = getData('userId');
     if (userId) {
       dispatch(fetchProfile(userId));
+      dispatch(fetchData());
     } else {
       navigate('/login');
     }
@@ -48,15 +50,15 @@ const Dashboard = () => {
   const lawyerCategory = (catId) => {
     navigate(`/lawyer/category/${catId}`);
   };
-
   return (
+    
     <>
       <Master type={"navbar"}>
         <div className="content px-4 overflow-y-auto h-full">
           <Users name={profile.name || ""} job={profile.nik || ""} />
-          <Sliders dataSpecials={specializations} onCLick={lawyerCategory} />
-          <TopRatedLawyer dataLawyers={profile} onClick={lawyerProfile} />
-          <News datas={news} />
+          <Sliders dataSpecials={Dataspecializations} onCLick={lawyerCategory} />
+          <TopRatedLawyer dataLawyers={Datalawyers} onClick={lawyerProfile} />
+          <News datas={Datanews} />
         </div>
       </Master>
       <Modal

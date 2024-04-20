@@ -20,7 +20,6 @@ const News = () => {
     window.open(articleUrl, '_blank');
   };
   
-  console.log(news)
   return (
     <div className="content-section">
       <div className="content-title pb-6">

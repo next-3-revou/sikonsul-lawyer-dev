@@ -7,7 +7,6 @@ import './App.css'
 function App() {
   const tokenizer = useSelector(state => state.token.tokenizer);
   const [status, setStatus] = useState(false)
-  console.log(tokenizer)
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('accessToken'));

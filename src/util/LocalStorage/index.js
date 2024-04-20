@@ -9,7 +9,6 @@ export const storeData =  (key, value) => {
 
 export const getData =  key => {
 	try {
-		console.log(key)
 		const value =  localStorage.getItem(key);
 		if (value !== null) {
 			// value previously stored
