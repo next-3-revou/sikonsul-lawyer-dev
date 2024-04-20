@@ -16,7 +16,6 @@ export const getAllNews = async () => {
 
   export const getProfile = async (id) => {
     try {
-      console.log(id)
       const token = localStorage.getItem('accessToken')
       const tokens = token.replace(/^"(.*)"$/, '$1');
       const response = await axios.get(`${URL_PROFILE}/${id}`, {

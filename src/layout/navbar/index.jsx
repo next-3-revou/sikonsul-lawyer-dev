@@ -41,7 +41,6 @@ const Navbar = () => {
 			setMessageContent('');
 		}, 3000);
 		navigate('/')
-
 	}
 
 	return (

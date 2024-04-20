@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const UserProfile = () => {
   const profile = useSelector((state) => state.profile.profile);
-  console.log(profile)
   return (
     <Master type={"navbar"}>
       <div className="content h-full px-4">

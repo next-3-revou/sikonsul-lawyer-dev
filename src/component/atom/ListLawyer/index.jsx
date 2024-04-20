@@ -8,7 +8,7 @@ const ListLawyer = ({name, speciality,onClick}) => {
   return (
     <div className="list-lawyer py-2 cursor-pointer" onClick={onClick}>
       <div className="list-lawyer-wrapper flex justify-between items-center">
-        <div className="lawyer-profile flex">
+        <div className="lawyer-profile flex items-center">
           <div className="lawyer-avatar">
             <Avatar size={52} icon={<UserOutlined />} />
           </div>
@@ -18,11 +18,11 @@ const ListLawyer = ({name, speciality,onClick}) => {
           </div>
         </div>
         <div className="lawyer-rate">
-          <Rate value={5} disabled={true} />
+          <Rate value={5} disabled />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ListLawyer
