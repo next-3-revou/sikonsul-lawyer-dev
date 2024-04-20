@@ -91,7 +91,9 @@ const SignUp = () => {
         <div className="content flex flex-col px-4">
           <Breadcrumb title={"Signup Account"} onClick={e => onPrev(e)} />
           <div className="content-form mt-48">
+            <div style={{overflow:'auto', maxHeight:'60vh'}}>
             <form onSubmit={formMik.handleSubmit}>
+              
               <div className="mb-4">
                 <label
                   className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
@@ -255,19 +257,18 @@ const SignUp = () => {
                 )}
               </div>
 
-
-              {formMik.values.specialization.map((specialization, index) => (
-                <div className="mb-4" key={index}>
+              {/* {formMik.values.specialization.map((specialization, index) => ( */}
+                <div className="mb-4" >
                   <label
                     className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
-                    htmlFor={`specialization-${index}`}
+                    htmlFor={`specialization`}
                   >
                     Specialization
                   </label>
                   <select
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id={`specialization-${index}`}
-                    value={formMik.values.specialization[index] || []} // Mengambil nilai spesialisasi pada indeks tertentu
+                    id={`specialization`}
+                    value={formMik.values.specialization || []} // Mengambil nilai spesialisasi pada indeks tertentu
                     onChange={(e) => {
                       const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
                       const newSpecializations = [...formMik.values.specialization];
@@ -276,7 +277,7 @@ const SignUp = () => {
                     }}
                     multiple // Memungkinkan pemilihan lebih dari satu opsi
                   >
-                    <option value="1">Hukum Bisnis</option>
+                    <option value="1">Hu kum Bisnis</option>
                     <option value="2">Hukum Kontra</option>
                     <option value="3">Hukum Pidana</option>
                   </select>
@@ -284,13 +285,14 @@ const SignUp = () => {
                     <p className="text-red-500 text-base text-left italic">{formMik.errors.specialization[index]}</p>
                   )}
                 </div>
-              ))}
+              {/* ))} */}
 
               <div className="flex items-center justify-between">
                 <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
               </div>
 
             </form>
+            </div>
           </div>
         </div >
       </Master >

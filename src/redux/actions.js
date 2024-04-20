@@ -25,18 +25,12 @@ export const addToken = (tokenData)=>{
 }
 
 export const addProfile = (profileData) => {
-  console.log(profileData,'profile haikal')
   return {
     type: ADD_PROFILE,
-    payload: profileData
+    payload:profileData
   };
 };
 
-export const clearProfile = () => {
-  return {
-    type: CLEAR_PROFILE
-  };
-};
 
 export const clearToken = () => {
   return async (dispatch) => {
@@ -92,7 +86,7 @@ export const fetchProfileFailure = (error) => {
 };
 
 export const fetchProfile = (lawyerId) => {
-
+console.log(lawyerId,'ini id')
   return async (dispatch) => {
     dispatch(fetchProfileRequest());
     try {

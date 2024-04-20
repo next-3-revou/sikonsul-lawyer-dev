@@ -12,7 +12,6 @@ import { storeData } from '../../util/LocalStorage';
 import { Avatar } from "antd";
 import { EyeOutlined, EyeInvisibleOutlined  } from '@ant-design/icons';
 import {} from '../../redux/reducers/'
-import { ADD_TOKEN } from '../../redux/actionTypes';
 import { addProfile, addToken } from '../../redux/actions';
 
 const URL_AUTH = import.meta.env.VITE_BE_ENDPOINT_AUTH
@@ -57,7 +56,7 @@ const SignIn = () => {
         dispatch(addToken(res.data.data))
         dispatch(addProfile(res.data.data))
         storeData('accessToken', res.data.data.token)
-				storeData('userId', res.data.data.userId)
+				storeData('userId', res.data.data.lawyerId)
         messageApi.open({
           type: 'success',
           content: "Success Login",

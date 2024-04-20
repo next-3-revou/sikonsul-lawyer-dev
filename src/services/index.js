@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const URL_NEWS = import.meta.env.VITE_BE_ENDPOINT_NEWS
-const URL_PROFILE = import.meta.env.VITE_BE_ENDPOINT_PROFILE_LAWYERS
+const URL_NEWS = import.meta.env.VITE_BE_ENDPOINT_NEWS;
+const URL_PROFILE = import.meta.env.VITE_BE_ENDPOINT_PROFILE_LAWYERS;
 
 export const getAllNews = async () => {
     try {
@@ -16,14 +16,15 @@ export const getAllNews = async () => {
 
   export const getProfile = async (id) => {
     try {
-      const token = localStorage.getItem('accessToken');
+      console.log(id)
+      const token = localStorage.getItem('accessToken')
+      const tokens = token.replace(/^"(.*)"$/, '$1');
       const response = await axios.get(`${URL_PROFILE}/${id}`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokens}`,
           'Content-Type': 'application/json',
         }
       });
-      console.log(response,'response haikal');
       return response.data;
     } catch (error) {
       console.error('Failed to fetch profile:', error);
