@@ -12,7 +12,6 @@ import { storeData } from '../../util/LocalStorage';
 import { Avatar } from "antd";
 import { EyeOutlined, EyeInvisibleOutlined  } from '@ant-design/icons';
 import {} from '../../redux/reducers/'
-import { ADD_TOKEN } from '../../redux/actionTypes';
 import { addProfile, addToken } from '../../redux/actions';
 
 const URL_AUTH = import.meta.env.VITE_BE_ENDPOINT_AUTH

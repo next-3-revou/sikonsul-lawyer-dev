@@ -16,15 +16,15 @@ export const getAllNews = async () => {
 
   export const getProfile = async (id) => {
     try {
+      console.log(id)
       const token = localStorage.getItem('accessToken')
-      console.log(token);
+      const tokens = token.replace(/^"(.*)"$/, '$1');
       const response = await axios.get(`${URL_PROFILE}/${id}`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYXd5ZXJJZCI6MTksImlhdCI6MTcxMzU0NTQzNywiZXhwIjoxNzEzNTUxNDM3fQ.CTg_USde6HkQPWhTFoJIZ3XIyAvUZ2XQ0JMzQPI0j38`,
+          Authorization: `Bearer ${tokens}`,
           'Content-Type': 'application/json',
         }
       });
-      console.log(response,'response haikal');
       return response.data;
     } catch (error) {
       console.error('Failed to fetch profile:', error);

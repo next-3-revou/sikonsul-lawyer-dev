@@ -20,37 +20,46 @@ const initialState = {
 
 
 export default function profile(state = initialState, action) {
+    console.log(action, 'test action')
     switch (action.type) {
         case ADD_PROFILE:
             return {
                 ...state,
                 profile: {
                     ...state.profile,
-                    id: action.payload.lawyerId || action.payload.id,
-                    name: action.payload.name,
-                    email: action.payload.email,
-                    nik: action.payload.NIK,
-                    university: action.payload.university,
-                    description: action.payload.description,
-                    alumnus: action.payload.alumnus,
-                    STRNumber: action.payload.STRNumber,
-                    specialization: action.payload.specialization
+                    id: action.payload.lawyerId,
+                    name: action.payload.name
                 },
             };
         case CLEAR_PROFILE:
             return {
-                ...state
-            }
+                ...state,
+                profile: {
+                    ...initialState.profile
+                }
+            };
         case FETCH_PROFILE_REQUEST:
             return {
                 ...state,
                 loading: true
             };
         case FETCH_PROFILE_SUCCESS:
+            const lawyer = action.payload.data.lawyer;
             return {
                 ...state,
+                profile: {
+                    ...state.profile,
+                    id: lawyer.id || state.profile.id,
+                    name: lawyer.name || state.profile.name,
+                    email: lawyer.email,
+                    nik: lawyer.NIK,
+                    university: lawyer.university,
+                    description: lawyer.description,
+                    alumnus: lawyer.profile[0].alumnus,
+                    STRNumber: lawyer.profile[0].STRNumber,
+                    specialization: lawyer.profile[0].specialization
+                },
                 loading: false,
-                profile: action.payload,
                 error: null
             };
         case FETCH_PROFILE_FAILURE:
@@ -60,6 +69,8 @@ export default function profile(state = initialState, action) {
                 profile: {},
                 error: action.payload
             };
+
+
         default:
             return {
                 ...state

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spin, Modal } from 'antd';
-import { clearData } from '../../util/LocalStorage';
-import { fetchData,fetchProfile } from '../../redux/actions';
+import { clearData, getData } from '../../util/LocalStorage';
+import { fetchProfile } from '../../redux/actions';
 import {News, Sliders, TopRatedLawyer, Users} from "../../component"
 import Master from "../../layout/master"
 
@@ -13,14 +13,16 @@ const Dashboard = () => {
   const profile = useSelector((state) => state.profile.profile);
   const news = useSelector((state) => state.news);
   const specializations = useSelector((state) => state.specializations);
-  const lawyers = useSelector((state) => state.profile.profile);
-  const lawyerId = lawyers.id
-
   const [open, setOpen] = useState(false);
   const [load, setLoad] = useState(false);
   
   useEffect(() => {
-    dispatch(fetchProfile(lawyerId));
+    const userId = getData('userId');
+    if (userId) {
+      dispatch(fetchProfile(userId));
+    } else {
+      navigate('/login');
+    }
   }, []);
 
   const handleOk = () => {
@@ -53,7 +55,7 @@ const Dashboard = () => {
         <div className="content px-4 overflow-y-auto h-full">
           <Users name={profile.name || ""} job={profile.nik || ""} />
           <Sliders dataSpecials={specializations} onCLick={lawyerCategory} />
-          <TopRatedLawyer dataLawyers={lawyers} onClick={lawyerProfile} />
+          <TopRatedLawyer dataLawyers={profile} onClick={lawyerProfile} />
           <News datas={news} />
         </div>
       </Master>

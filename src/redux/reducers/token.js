@@ -9,7 +9,6 @@ const initialState = {
 export default function token(state = initialState, action) {
     switch (action.type) {
         case ADD_TOKEN:
-            console.log(action,'sampai')
             return {
                 ...state,
                 tokenizer: {
