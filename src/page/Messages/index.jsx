@@ -63,9 +63,10 @@ const Messages = () => {
   })
   
 
-  const chatUser = (e, userId) => {
+  const chatUser = (e, userId,userName) => {
     e.preventDefault()
-    navigate(`/user/${userId}/chat`)
+    let nameUrl = userName.replace(/\s+/g, '-')
+    navigate(`/user/${userId}/chat/${nameUrl}`)
   }
 
   return (

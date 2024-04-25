@@ -92,11 +92,10 @@ const SignUp = () => {
     fetchSpecialization();
   }, []);
 
+
   const formMik = useFormik({
     initialValues: initialValues,
-    onSubmit: (values) => {
-      handleSignUp(values);
-    },
+    onSubmit: handleSignUp,
     validationSchema: validationSchema
   })
 
