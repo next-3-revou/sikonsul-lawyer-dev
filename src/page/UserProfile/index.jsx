@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 const UserProfile = () => {
   const profile = useSelector((state) => state.profile.profile);
+  console.log(profile)
   return (
     <Master type={"navbar"}>
       <div className="content h-full px-4">
@@ -17,12 +18,22 @@ const UserProfile = () => {
               </div>
               <div className="lawyer-profile-info-detail-identity">
                 <h2 className="text-black text-xl text-center font-semibold">{profile.name}</h2>
-                <h2 className="text-[#7D8797] text-base text-center">Hukum Perdata</h2>
+                <h2 className="text-[#7D8797] text-base text-center">
+                  <div>
+                    {profile.specialization.map((spec, index) => (
+                      <span key={index}>
+                        {spec.specialization.name}
+                        {index < profile.specialization.length - 1 && ", "}
+                      </span>
+                    ))}
+                  </div>
+
+                </h2>
               </div>
             </div>
-                <div style={{ overflow: 'auto', maxHeight: '60vh' }}>
-            <div className="lawyer-profile-info-detail my-10">
-              <div className="flex flex-col items-center py-2">
+            <div style={{ overflow: 'auto', maxHeight: '60vh' }}>
+              <div className="lawyer-profile-info-detail my-10">
+                <div className="flex flex-col items-center py-2">
                   <div className="w-full py-4 border-b border-[#EEEEEE]">
                     <label
                       className="block text-[#7D8797] text-lg font-normal mb-2 text-left"
