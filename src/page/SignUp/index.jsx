@@ -67,11 +67,10 @@ const SignUp = () => {
         description,
         alumnus,
         STRNumber,
-        specializationIds
+        specializationIds: specializationIds.map(id => parseInt(id))
       };
-      const res = await axios.post(`${URL_AUTH}/register`, data);
       console.log(data, 'haikal')
-      console.log(res)
+      const res = await axios.post(`${URL_AUTH}/register`, data);
       if (res.status === 201) {
         setLoad(false);
         messageApi.open({
@@ -311,22 +310,26 @@ const SignUp = () => {
                     <select
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id={`specialization`}
+                      name="specializationIds" // Tambahkan atribut name di sini
                       value={formMik.values.specializationIds || []}
                       onChange={(e) => {
                         const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
-                        formMik.setFieldValue('specialization', selectedOptions);
+                        formMik.setFieldValue('specializationIds', selectedOptions);
                       }}
                       multiple
                     >
                       {specializationOptions.map(option => (
-                        <option key={option.id} value={option.id}>{option.name}</option>
+                        <option key={option.id} value={option.id}>
+                          {option.name}
+                        </option>
                       ))}
                     </select>
                   )}
-                  {formMik.errors.specialization && (
-                    <p className="text-red-500 text-base text-left italic">{formMik.errors.specialization}</p>
+                  {formMik.errors.specializationIds && (
+                    <p className="text-red-500 text-base text-left italic">{formMik.errors.specializationIds}</p>
                   )}
                 </div>
+
 
                 <div className="flex items-center justify-between">
                   <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
