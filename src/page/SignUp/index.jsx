@@ -70,7 +70,7 @@ const SignUp = () => {
         specializationIds
       };
       const res = await axios.post(`${URL_AUTH}/register`, data);
-      console.log(data,'haikal')
+      console.log(data, 'haikal')
       console.log(res)
       if (res.status === 201) {
         setLoad(false);
@@ -87,9 +87,21 @@ const SignUp = () => {
 
     } catch (error) {
       setLoad(false);
+      let errorMessage = 'An error occurred';
+      if (error.response) {
+        if (error.response.data && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        } else {
+          errorMessage = `Server error: ${error.response.status}`;
+        }
+      } else if (error.request) {
+        errorMessage = 'No response from server, please try again later';
+      } else {
+        errorMessage = error.message;
+      }
       messageApi.open({
         type: 'error',
-        content: error.message,
+        content: errorMessage,
       });
     }
   };
@@ -317,8 +329,8 @@ const SignUp = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
-              </div>
+                  <Buttons title={"Sign Up"} width={"w-full"} height={"h-12"} gap={"my-2"} tipe={"active"} />
+                </div>
               </form>
             </div>
           </div>
