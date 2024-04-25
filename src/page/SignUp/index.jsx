@@ -30,7 +30,7 @@ const SignUp = () => {
     description: '',
     alumnus: '',
     STRNumber: '',
-    specialization: []
+    specializationIds: []
   }
 
   const onPrev = e => {
@@ -50,14 +50,29 @@ const SignUp = () => {
     description: yup.string().required('This field required'),
     alumnus: yup.string().required('This field required'),
     STRNumber: yup.string().required('This field required'),
-    specialization: yup.array().of(yup.string().required('Specialization is required'))
+    specializationIds: yup.array().of(yup.string().required('Specialization is required'))
   })
 
   const handleSignUp = async values => {
     try {
       setLoad(true);
-      const res = await axios.post(`${URL_AUTH}/register`, values);
-      if (res.status === 200) {
+      const { name, email, password, NIK, address, university, description, alumnus, STRNumber, specializationIds } = values;
+      const data = {
+        name,
+        email,
+        password,
+        NIK,
+        address,
+        university,
+        description,
+        alumnus,
+        STRNumber,
+        specializationIds
+      };
+      const res = await axios.post(`${URL_AUTH}/register`, data);
+      console.log(data,'haikal')
+      console.log(res)
+      if (res.status === 201) {
         setLoad(false);
         messageApi.open({
           type: 'success',
@@ -284,7 +299,7 @@ const SignUp = () => {
                     <select
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id={`specialization`}
-                      value={formMik.values.specialization || []}
+                      value={formMik.values.specializationIds || []}
                       onChange={(e) => {
                         const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
                         formMik.setFieldValue('specialization', selectedOptions);
