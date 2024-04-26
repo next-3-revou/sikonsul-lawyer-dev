@@ -4,7 +4,7 @@ import { Avatar, Rate } from "antd";
 import { UserOutlined } from '@ant-design/icons';
 
 
-const ListLawyer = ({name, speciality,onClick}) => {
+const ListLawyer = ({name, speciality,rating,onClick}) => {
   return (
     <div className="list-lawyer py-2 cursor-pointer" onClick={onClick}>
       <div className="list-lawyer-wrapper flex justify-between items-center">
@@ -18,7 +18,7 @@ const ListLawyer = ({name, speciality,onClick}) => {
           </div>
         </div>
         <div className="lawyer-rate">
-          <Rate value={5} disabled />
+          <Rate value={rating} disabled />
         </div>
       </div>
     </div>

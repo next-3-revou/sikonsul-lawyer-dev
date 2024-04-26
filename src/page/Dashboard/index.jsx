@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spin, Modal } from 'antd';
 import { clearData, getData } from '../../util/LocalStorage';
 import { fetchProfile,fetchData } from '../../redux/actions';
 import {News, Sliders, TopRatedLawyer, Users} from "../../component"
 import Master from "../../layout/master"
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -47,16 +47,13 @@ const Dashboard = () => {
     navigate(`/lawyer/profile/${idLawyer}`);
   };
 
-  const lawyerCategory = (catId) => {
-    navigate(`/lawyer/category/${catId}`);
-  };
   return (
     
     <>
       <Master type={"navbar"}>
         <div className="content px-4 overflow-y-auto h-full">
           <Users name={profile.name || ""} job={profile.nik || ""} />
-          <Sliders dataSpecials={Dataspecializations} onCLick={lawyerCategory} />
+          <Sliders dataSpecials={Dataspecializations} />
           <TopRatedLawyer dataLawyers={Datalawyers} onClick={lawyerProfile} />
           <News datas={Datanews} />
         </div>
