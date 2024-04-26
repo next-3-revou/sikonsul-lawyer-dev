@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const URL_NEWS = import.meta.env.VITE_BE_ENDPOINT_NEWS;
 const URL_PROFILE = import.meta.env.VITE_BE_ENDPOINT_PROFILE_LAWYERS;
+const URL_LIST_SPECIALIZELAWYER = import.meta.env.VITE_BE_ENDPOINT_LAWYERS
 
 export const getAllNews = async () => {
     try {
@@ -30,3 +31,13 @@ export const getAllNews = async () => {
       throw new Error(error.message);
     }
   };
+
+  
+  export const fetchLawyerSpecialize = async(id) => {
+    try {
+      const specializelawyer = await axios.get(`${URL_LIST_SPECIALIZELAWYER}/${id}`);
+      return specializelawyer.data.data.lawyers; 
+    } catch (error) {
+        console.log(error)
+    }
+};

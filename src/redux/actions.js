@@ -65,8 +65,9 @@ export const fetchData = () => {
     } catch (error) {
       // Handle error
     }
-  };
-};
+  }
+}
+
 
 
 export const fetchProfileRequest = () => {
