@@ -9,14 +9,14 @@ const TopRatedLawyer = ({ dataLawyers, onClick }) => {
         <h2 className='text-black text-left text-lg font-semibold'>Top Rated Lawyer</h2>
       </div>
       {dataLawyers
-        .slice(0, 3)
-        .sort((a, b) => a.rate - b.rate)
+        .sort((a, b) => b.rating - a.rating) // Mengurutkan dari rating terbesar ke terkecil
+        .slice(0, 3) // Mengambil tiga data pertama setelah diurutkan
         .map((lawyer, index) => (
           <ListLawyer
             key={index}
-            name={lawyer.name}
-            speciality={lawyer.speciality && lawyer.speciality.join(', ')}
-            rate={lawyer.rating}
+            name={lawyer.name}  
+            speciality={lawyer.profile[0].specialization && lawyer.profile[0].specialization.join(', ')}
+            rating={lawyer.rating}
             onClick={() => onClick(lawyer.id)}
           />
         ))}
