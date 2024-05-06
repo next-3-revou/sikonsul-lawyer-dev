@@ -33,7 +33,6 @@ const Navbar = () => {
 	}
 
 	const logout = (e) => {
-		console.log('sampai dong')
 		e.preventDefault()
 		dispatch(clearToken())
 		setMessageContent('Success SignOut');

@@ -32,12 +32,14 @@ export const getAllNews = async () => {
     }
   };
 
-  
   export const fetchLawyerSpecialize = async(id) => {
     try {
       const specializelawyer = await axios.get(`${URL_LIST_SPECIALIZELAWYER}/${id}`);
-      return specializelawyer.data.data.lawyers; 
+      return specializelawyer; 
     } catch (error) {
-        console.log(error)
+      return {
+        status: error.response.status,
+        message: error.response.data.message
+      };
     }
 };

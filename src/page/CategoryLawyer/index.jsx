@@ -23,9 +23,14 @@ const CategoryLawyer = () => {
     const fetchData = async () => {
       try {
         const result = await fetchLawyerSpecialize(categoryId);
-        setUser(result);
+        if(result.status === 200){
+          setUser(result.data.data.lawyers);
+        }
+        else{
+          setUser(result)
+        }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log('error fetching data',error,)
       }
     };
     

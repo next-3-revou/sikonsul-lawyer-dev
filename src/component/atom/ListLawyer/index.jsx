@@ -13,11 +13,12 @@ const ListLawyer = ({name, speciality,rating,onClick}) => {
             <Avatar size={52} icon={<UserOutlined />} />
           </div>
           <div className="lawyer-name px-5">
-            <h2 className="text-black text-xl text-left">{name}</h2>
+            <h2 className="text-black text-xl text-left">{name.substring(0, 10)}</h2>
             <h2 className="text-[#7D8797] text-base text-left">{speciality}</h2>
           </div>
         </div>
         <div className="lawyer-rate">
+          <span className="text-[#7D8797] text-base">{rating}</span>
           <Rate value={rating} disabled />
         </div>
       </div>
